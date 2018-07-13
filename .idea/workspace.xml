@@ -1,7 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49934c95-0422-400f-b73c-5e2981f74d8d" name="Default" comment="" />
+    <list default="true" id="49934c95-0422-400f-b73c-5e2981f74d8d" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/common/pom.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/base/dao/BaseDAO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/base/service/BaseService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/base/service/BaseServiceImpl.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/config/BaseConfig.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/config/EnMessageCodeFormatter.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/constant/GlobalConstant.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/entity/ServerResponse.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/interceptor/GlobalExceptionAdvice.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/service/UserService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/utils/ObjectUtils.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/common/src/main/resources/i18n.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/consumer/pom.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/consumer/user-consumer/pom.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/consumer/user-consumer/src/main/java/per/wilson/distributed/UserConsumerApp.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/consumer/user-consumer/src/main/java/per/wilson/distributed/config/SwaggerConfig.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/consumer/user-consumer/src/main/java/per/wilson/distributed/config/WebConfig.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/consumer/user-consumer/src/main/java/per/wilson/distributed/controller/UserController.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/consumer/user-consumer/src/main/java/per/wilson/distributed/controller/UserControllerImpl.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/consumer/user-consumer/src/main/resources/application.yml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/consumer/user-consumer/src/main/resources/jdbc.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/consumer/user-consumer/src/main/resources/logback.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/consumer/user-consumer/src/main/webapp/WEB-INF/web.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/consumer/user-consumer/src/main/webapp/index.jsp" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/distributed_demo.sql" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/entity/pom.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/entity/src/main/java/per/wilson/distributed/model/entity/User.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/entity/src/test/java/per/wilson/distributed/AppTest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/project-workbench.mwb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/project-workbench.mwb.bak" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/provider/pom.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/provider/user/pom.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/provider/user/src/main/java/per/wilson/distributed/UserProviderApp.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/provider/user/src/main/java/per/wilson/distributed/config/DataSourceConfig.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/provider/user/src/main/java/per/wilson/distributed/config/MybatisConfig.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/provider/user/src/main/java/per/wilson/distributed/config/SwaggerConfig.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/provider/user/src/main/java/per/wilson/distributed/config/WebConfig.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/provider/user/src/main/java/per/wilson/distributed/dao/UserDAO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/provider/user/src/main/java/per/wilson/distributed/service/impl/UserServiceImpl.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/provider/user/src/main/resources/application.yml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/provider/user/src/main/resources/dubbo.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/provider/user/src/main/resources/jdbc.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/provider/user/src/main/resources/logback.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/provider/user/src/main/webapp/WEB-INF/web.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/provider/user/src/main/webapp/index.jsp" />
+      <change beforePath="$PROJECT_DIR$/.gitignore/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.gitignore~init" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.gitignore~init_0" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,46 +78,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GlobalExceptionAdvice.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/interceptor/GlobalExceptionAdvice.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore~init" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore~init">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="30" column="8" lean-forward="false" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GlobalConstant.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/constant/GlobalConstant.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="3" lean-forward="false" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="30" column="8" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="30" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="HttpStatus.java" pinned="false" current-in-tab="false">
         <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.6.RELEASE/spring-web-5.0.6.RELEASE-sources.jar!/org/springframework/http/HttpStatus.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -76,31 +88,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+      <file leaf-file-name="SwaggerConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/consumer/user-consumer/src/main/java/per/wilson/distributed/config/SwaggerConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="760">
-              <caret line="148" column="36" lean-forward="false" selection-start-line="148" selection-start-column="36" selection-end-line="148" selection-end-column="36" />
+            <state relative-caret-position="283">
+              <caret line="36" column="25" lean-forward="true" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/entity/src/main/java/per/wilson/distributed/model/entity/User.java">
+      <file leaf-file-name="GlobalExceptionAdvice.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/interceptor/GlobalExceptionAdvice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="28" column="43" lean-forward="false" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/config/BaseConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="53" column="62" lean-forward="false" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
+            <state relative-caret-position="972">
+              <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -332,13 +334,205 @@
             <path>
               <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
               <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="per" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="per" type="462c0819:PsiDirectoryNode" />
+              <item name="wilson" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="per" type="462c0819:PsiDirectoryNode" />
+              <item name="wilson" type="462c0819:PsiDirectoryNode" />
+              <item name="distributed" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="per" type="462c0819:PsiDirectoryNode" />
+              <item name="wilson" type="462c0819:PsiDirectoryNode" />
+              <item name="distributed" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="per" type="462c0819:PsiDirectoryNode" />
+              <item name="wilson" type="462c0819:PsiDirectoryNode" />
+              <item name="distributed" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="per" type="462c0819:PsiDirectoryNode" />
+              <item name="wilson" type="462c0819:PsiDirectoryNode" />
+              <item name="distributed" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="BaseDAO" type="1a9f42e2:ClassTreeNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="consumer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="user-consumer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="user-consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="user-consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="user-consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="user-consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="per" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="user-consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="per" type="462c0819:PsiDirectoryNode" />
+              <item name="wilson" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="user-consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="per" type="462c0819:PsiDirectoryNode" />
+              <item name="wilson" type="462c0819:PsiDirectoryNode" />
+              <item name="distributed" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="user-consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="per" type="462c0819:PsiDirectoryNode" />
+              <item name="wilson" type="462c0819:PsiDirectoryNode" />
+              <item name="distributed" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="user-consumer" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="distributed-demo" type="b2602c69:ProjectViewProjectNode" />
               <item name="distributed-demo" type="462c0819:PsiDirectoryNode" />
               <item name="entity" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -348,7 +542,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -556,16 +750,15 @@
       <workItem from="1531450444089" duration="4582000" />
       <workItem from="1531464164456" duration="188000" />
       <workItem from="1531464367607" duration="728000" />
-      <workItem from="1531470760762" duration="3878000" />
+      <workItem from="1531470760762" duration="4264000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53682000" />
+    <option name="totallyTimeSpent" value="54068000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -579,7 +772,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34754798" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34754798" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -647,13 +840,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.0.6.RELEASE/spring-context-5.0.6.RELEASE-sources.jar!/org/springframework/validation/beanvalidation/MethodValidationPostProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="40" column="41" lean-forward="true" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/consumer/user-consumer/src/main/java/per/wilson/distributed/controller/UserControllerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="41">
@@ -945,14 +1131,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.6.RELEASE/spring-web-5.0.6.RELEASE-sources.jar!/org/springframework/http/HttpStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="200" column="4" lean-forward="false" selection-start-line="200" selection-start-column="4" selection-end-line="200" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -993,14 +1171,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/interceptor/GlobalExceptionAdvice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
@@ -1013,6 +1183,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="30" column="8" lean-forward="false" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.6.RELEASE/spring-web-5.0.6.RELEASE-sources.jar!/org/springframework/http/HttpStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="200" column="4" lean-forward="false" selection-start-line="200" selection-start-column="4" selection-end-line="200" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/consumer/user-consumer/src/main/java/per/wilson/distributed/config/SwaggerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="36" column="25" lean-forward="true" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/per/wilson/distributed/interceptor/GlobalExceptionAdvice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding />
         </state>
       </provider>

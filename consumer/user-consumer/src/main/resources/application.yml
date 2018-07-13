@@ -1,0 +1,37 @@
+server:
+  port: 8201
+spring:
+  application:
+    name: user-consumer
+  messages:
+    basename: classpath*:i18n.properties
+
+# dubbo config
+dubbo:
+  scan:
+    base-packages: per.wilson.distributed.controller
+  application:
+    name: user-consumer
+    id: user-consumer
+  protocol:
+    id: user-consumer
+    name: user-consumer
+    port: 10001
+  registry:
+      address: multicast://224.5.6.7:1234
+      check: false
+  consumer:
+    check: false
+    timeout: 300
+
+# eureka config
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    client:
+        enabled: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
