@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="distributed-demo:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="distributed-demo.war">
-      <element id="artifact" artifact-name="distributed-demo:war exploded" />
-    </root>
-  </artifact>
-</component>
