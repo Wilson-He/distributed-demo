@@ -14,9 +14,10 @@ import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.type.JdbcType;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.mybatis.spring.transaction.SpringManagedTransactionFactory;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import per.wilson.distributed.constant.GlobalConstant;
@@ -31,6 +32,7 @@ import java.util.Properties;
  * @date 18-7-10
  */
 @Configuration
+@RefreshScope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class MybatisConfig {
     private static final String MAPPER_PATH = GlobalConstant.MAPPER_PATH;
     private static final String DAO_PACKAGE = GlobalConstant.DAO_PACKAGE;

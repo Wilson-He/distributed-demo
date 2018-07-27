@@ -1,20 +1,20 @@
 server:
-  port: 8201
+  port: 8202
 spring:
   application:
-    name: user-consumer
+    name: business-consumer
 
 # dubbo config
 dubbo:
   scan:
     base-packages: per.wilson.distributed.controller
   application:
-    name: user-consumer
-    id: user-consumer
+    name: business-consumer
+    id: business-consumer
   protocol:
-    id: user-consumer
-    name: user-consumer
-    port: 10001
+    id: business-consumer
+    name: business-consumer
+    port: 10002
   registry:
       address: multicast://224.5.6.7:1234
       check: false

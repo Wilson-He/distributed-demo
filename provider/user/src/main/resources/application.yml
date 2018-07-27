@@ -3,6 +3,17 @@ server:
 spring:
   application:
     name: user-provider
+  profiles:
+    include: jdbc
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        health-check-path: ${managemant.contextPath}/health
+      config:
+        enabled: true
+
 dubbo:
   scan:
     base-packages: per.wilson.distributed.service
@@ -27,3 +38,8 @@ eureka:
         enabled: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+
+redis:
+  max-idle: 10
+  min-idle: 5
