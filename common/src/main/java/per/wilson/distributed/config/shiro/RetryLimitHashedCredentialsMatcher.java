@@ -6,7 +6,7 @@ import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import per.wilson.distributed.model.entity.User;
+import per.wilson.distributed.entity.model.User;
 
 import java.util.Objects;
 

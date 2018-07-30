@@ -1,7 +1,7 @@
 package per.wilson.distributed.config.shiro;
 
 import org.apache.shiro.crypto.hash.SimpleHash;
-import per.wilson.distributed.model.entity.User;
+import per.wilson.distributed.entity.model.User;
 
 /**
  * Created by Wilson on 2017/6/21.

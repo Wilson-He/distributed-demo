@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import per.wilson.distributed.config.shiro.JWTToken;
-import per.wilson.distributed.model.entity.User;
+import per.wilson.distributed.entity.model.User;
 import per.wilson.distributed.service.UserService;
 import per.wilson.distributed.utils.JWTUtils;
 

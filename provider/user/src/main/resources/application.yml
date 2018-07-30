@@ -10,7 +10,8 @@ spring:
       host: localhost
       port: 8500
       discovery:
-        health-check-path: ${managemant.contextPath}/health
+        health-check-path: /health/user-provider
+        service-name: user-provider
       config:
         enabled: true
 

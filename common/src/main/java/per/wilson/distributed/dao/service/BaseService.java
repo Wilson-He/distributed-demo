@@ -1,5 +1,7 @@
-package per.wilson.distributed.base.service;
+package per.wilson.distributed.dao.service;
 
+
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 
@@ -15,7 +17,7 @@ public interface BaseService<T> {
 
     T getByField(String field, Object value);
 
-    T getByWrapper(Wrapper<T> wrapper);
+    T getByWrapper(EntityWrapper<T> wrapper);
 
     List<T> listByWrapper(Wrapper<T> wrapper);
 

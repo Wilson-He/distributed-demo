@@ -12,7 +12,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import per.wilson.distributed.model.entity.User;
+import per.wilson.distributed.entity.model.User;
 import per.wilson.distributed.service.UserService;
 
 import java.util.List;

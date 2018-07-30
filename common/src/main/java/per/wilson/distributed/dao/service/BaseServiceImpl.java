@@ -1,11 +1,11 @@
-package per.wilson.distributed.base.service;
+package per.wilson.distributed.dao.service;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.SqlHelper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.beans.factory.annotation.Autowired;
-import per.wilson.distributed.base.dao.BaseDAO;
+import per.wilson.distributed.dao.BaseDAO;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +28,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
     }
 
     @Override
-    public T getByWrapper(Wrapper<T> wrapper) {
+    public T getByWrapper(EntityWrapper<T> wrapper) {
         return Optional.ofNullable(baseDAO.selectList(wrapper.last("limit 0,1")))
                 .map(e -> e.isEmpty() ? null : e.get(0))
                 .orElse(null);

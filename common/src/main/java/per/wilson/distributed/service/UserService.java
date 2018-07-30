@@ -1,8 +1,8 @@
 package per.wilson.distributed.service;
 
 
-import per.wilson.distributed.base.service.BaseService;
-import per.wilson.distributed.model.entity.User;
+import per.wilson.distributed.dao.service.BaseService;
+import per.wilson.distributed.entity.model.User;
 
 import javax.validation.constraints.Max;
 
@@ -16,4 +16,5 @@ import javax.validation.constraints.Max;
  */
 public interface UserService extends BaseService<User> {
     int number(@Max(1) int number);
+
 }

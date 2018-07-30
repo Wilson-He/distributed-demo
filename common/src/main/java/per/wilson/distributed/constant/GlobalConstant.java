@@ -8,7 +8,7 @@ package per.wilson.distributed.constant;
  */
 public interface GlobalConstant {
     String BASE_PACKAGE = "per.wilson.distributed";
-    String MODEL_PACKAGE = BASE_PACKAGE + ".model";
+    String MODEL_PACKAGE = BASE_PACKAGE + ".entity.model";
     String DAO_PACKAGE = BASE_PACKAGE + ".dao";
     String SERVICE_PACKAGE = BASE_PACKAGE + ".service";
     String MAPPER_PATH = "classpath*:mappers/*.xml";

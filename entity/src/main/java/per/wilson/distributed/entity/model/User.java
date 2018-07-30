@@ -1,4 +1,4 @@
-package per.wilson.distributed.model.entity;
+package per.wilson.distributed.entity.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotations.TableId;

@@ -2,8 +2,7 @@ package per.wilson.distributed.dao;
 
 
 import org.springframework.stereotype.Repository;
-import per.wilson.distributed.base.dao.BaseDAO;
-import per.wilson.distributed.model.entity.User;
+import per.wilson.distributed.entity.model.User;
 
 /**
  * <p>
@@ -15,5 +14,4 @@ import per.wilson.distributed.model.entity.User;
  */
 @Repository
 public interface UserDAO extends BaseDAO<User> {
-
 }

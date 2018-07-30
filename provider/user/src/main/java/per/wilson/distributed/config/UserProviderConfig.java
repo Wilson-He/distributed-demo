@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * @author Wilson
  * @date 18-7-27
  */
-@ComponentScan
+@ComponentScan("per.wilson")
 @Configuration
-public class UserProvideBaseConfig {
+public class UserProviderConfig {
 }
