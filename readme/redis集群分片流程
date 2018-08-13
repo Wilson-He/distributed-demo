@@ -1,0 +1,49 @@
+1.建立集群文件夹,例命名为cluster
+
+2.在cluster下建立需要集群的redis数目的文件夹及以各redis所占端口命名文件夹(如638x)
+
+3.在各端口文件夹下创建存放redis数据的文件夹，例命名为data
+
+4.将redis默认的配置文件夹复制到各端口文件夹下，并修改以下配置：
+(1)bind 本机ip(如bind 192.168.1.101)
+(2)daemonize yes
+(3)pid /var/run/redis_6381.pid   //当前redis所占端口号为6381
+(4)cluster-enabled yes
+(5)cluster-config-file node-6381.conf	//集群配置文件，首次启动自动生成，命名可自定义
+(6)cluster-node-timeout 15000		//超时设定，自定义
+(7)appendonly yes //日志开启,可提供更好的持久性保证
+(8)dir /usr/redis/cluster/6381/data/
+5.redis-server /usr/redis/cluster/#{port}/redos.conf再执行ps -ef|grep redis查看是否启动成功
+
+6.创建集群，由于redis集群需要ruby指令，所以需安装ruby
+(1)sudo apt install ruby
+(2)sudo apt install rubygems
+(3)gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
+由于被墙掉了所以改用国内镜像
+(4)gem sources -l
+显示
+*** CURRENT SOURCES ***
+https://gems.ruby-china.org
+(5)sudo gem install redis --version 4.0.0
+个人redis的版本是4.0.9，但由于没有找到所以就装了4.0.0，同一大版本影响不大
+(6)进入redis的src目录下，执行指令./redis-trib.rb create --replicas 1 192.168.0.101:6381 192.168.0.101:6382 192.168.0.101:6383 192.168.0.101:6384 192.168.0.101:6385 192.168.0.101:6386 
+指令中1代表每台主机的从机数，如1主1从共6个机器则取前3个为主，若1主2从共10个机器6390则第10个将作为从节点添加到指令中的第一个机器6381
+默认取指令中1后面的m(这里为3)个为主机
+7.验证集群
+连接到任意一个客户端:./redis-cli -c -h 192.168.0.101 -p 6381,输入验证指令：
+cluster info(显示集群信息),cluster nodes(查看节点列表)
+
+
+移除节点:./redis-trib.rb del-node 本地ip:节点port 节点id(通过连接任一节点cluster info获取，ip前的字符串)
+添加从节点到主节点:/redis-trib.rb add-node --slave --master-id 主节点id 从ip:从port 主ip:主port 
+
+
+注意：
+(1)关闭集群需逐个关闭,/usr/redis/redis/src/redis-cli -c -h 192.168.0.101 -p 638* shutdown
+(2)删除节点时需节点槽slot为0,通过./redis-trib.rb reshard host:port 转移slot数值到其它节点
+(3)节点存储数据文件夹(如data)不为空时删除会报not empty错误
+
+
+
+
+
