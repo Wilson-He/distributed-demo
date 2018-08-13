@@ -15,9 +15,7 @@ import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.type.JdbcType;
 import org.mybatis.spring.annotation.MapperScan;
-import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.mybatis.spring.transaction.SpringManagedTransactionFactory;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -52,7 +50,6 @@ public class MybatisConfig {
     }
 
     @Bean("sqlSessionFactory")
-    @RefreshScope
     public MybatisSqlSessionFactoryBean sqlSessionFactory(MybatisConfiguration mybatisConfiguration,
                                                           DataSource dataSource,
                                                           GlobalConfiguration globalConfig) throws Exception {
@@ -71,13 +68,6 @@ public class MybatisConfig {
         });
         sqlSessionFactory.setGlobalConfig(globalConfig);
         return sqlSessionFactory;
-    }
-
-    @Bean
-    public MapperScannerConfigurer mapperScannerConfigurer(){
-        MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
-        mapperScannerConfigurer.setBasePackage("per.wilson.distributed");
-        return mapperScannerConfigurer;
     }
 
     @Bean

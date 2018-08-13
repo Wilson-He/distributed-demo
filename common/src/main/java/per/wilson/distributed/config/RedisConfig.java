@@ -1,151 +1,95 @@
 package per.wilson.distributed.config;
 
-import com.alibaba.fastjson.JSON;
+import lombok.Setter;
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cache.CacheManager;
-import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.core.env.Environment;
 import org.springframework.data.redis.cache.RedisCacheManager;
-import org.springframework.data.redis.cache.RedisCacheWriter;
+import org.springframework.data.redis.connection.RedisPassword;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
+import redis.clients.jedis.HostAndPort;
+import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPoolConfig;
 
+import javax.annotation.Resource;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.IntStream;
 
 /**
- * 创建人：Wilson
- * 描述：
- * 创建日期：2017/9/2
+ * RedisConfig
+ *
+ * @author Wilson
+ * @date 18-8-9
  */
-@PropertySource("classpath:redis.properties")
-@ConfigurationProperties("redis")
 @Configuration
-@EnableCaching
+@EnableAutoConfiguration
+@ConfigurationProperties("spring.redis.cluster.nodes")
+@Setter
 public class RedisConfig {
-    private String host;
-    private int port;
-    private int maxTotal;
-    private int maxIdle;
-    private int minIdle;
-    private long maxWaitMillis;
-    private boolean testOnBorrow;
-    private boolean testOnReturn;
-    private boolean testWhileIdle;
-    private long timeBetweenEvictionRunsMillis;
-    private int numTestsPerEvictionRun;
-    private long minEvictableIdleTimeMillis;
+    @Resource
+    private Environment environment;
+
+    private List<String> hosts;
+
+    private List<Integer> ports;
+
+    private int timeout;
+
+    private int maxAttempt;
+
 
     @Bean
-    public JedisPoolConfig jedisPoolConfig() {
-        JedisPoolConfig config = new JedisPoolConfig();
-        config.setMaxTotal(maxTotal);
-        config.setMaxIdle(maxIdle);
-        config.setMinIdle(minIdle);//设置最小空闲数
-        config.setMaxWaitMillis(maxWaitMillis);
-        config.setTestOnBorrow(testOnBorrow);
-        config.setTestOnReturn(testOnReturn);
-        //Idle时进行连接扫描
-        config.setTestWhileIdle(testWhileIdle);
-        //表示idle object evitor两次扫描之间要sleep的毫秒数
-        config.setTimeBetweenEvictionRunsMillis(timeBetweenEvictionRunsMillis);
-        //表示idle object evitor每次扫描的最多的对象数
-        config.setNumTestsPerEvictionRun(numTestsPerEvictionRun);
-        //表示一个对象至少停留在idle状态的最短时间，然后才能被idle object evitor扫描并驱逐；这一项只有在timeBetweenEvictionRunsMillis大于0时才有意义
-        config.setMinEvictableIdleTimeMillis(minEvictableIdleTimeMillis);
-        return config;
+    @ConfigurationProperties(prefix = "spring.redis.jedis.pool.config")
+    public GenericObjectPoolConfig poolConfig() {
+        return new JedisPoolConfig();
     }
 
     @Bean
-    public JedisConnectionFactory jedisConnectionFactory(JedisPoolConfig jedisPoolConfig){
-        return new JedisConnectionFactory(jedisPoolConfig);
-
+    public RedisPassword redisPassword() {
+        return RedisPassword.of(environment.getProperty("spring.redis.password"));
     }
 
     @Bean
-    public RedisStandaloneConfiguration redisConnectionFactory() {
-        return new RedisStandaloneConfiguration(host,port);
+    public Set<HostAndPort> nodes() {
+        Set<HostAndPort> nodes = new HashSet<>();
+        IntStream.rangeClosed(0, nodes.size())
+                .forEach(e -> nodes.add(new HostAndPort(hosts.get(e), ports.get(e))));
+        return nodes;
     }
 
     @Bean
-    public RedisTemplate redisTemplate(JedisConnectionFactory redisConnectionFactory) {
-        RedisTemplate redisTemplate = new RedisTemplate();
-        redisTemplate.setConnectionFactory(redisConnectionFactory);
-        return redisTemplate;
+    public JedisCluster jedisCluster(Set<HostAndPort> nodes,GenericObjectPoolConfig poolConfig) {
+        return new JedisCluster(nodes,timeout,maxAttempt,poolConfig);
     }
 
     @Bean
-    public CacheManager cacheManager(JedisConnectionFactory jedisConnectionFactory) {
-        RedisCacheWriter redisCacheWriter = RedisCacheWriter.lockingRedisCacheWriter(jedisConnectionFactory);
-        RedisCacheConfiguration cacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
-        return new RedisCacheManager(redisCacheWriter,cacheConfiguration);
+    @ConditionalOnProperty(name = "spring.redis.is-init", havingValue = "true")
+    @ConfigurationProperties(prefix = "spring.redis")
+    public RedisStandaloneConfiguration redisStandaloneConfiguration(RedisPassword redisPassword) {
+        RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration();
+        configuration.setPassword(redisPassword);
+        return configuration;
     }
 
     @Bean
-    public KeyGenerator customKeyGenerator() {
-        return (o, method, objects) -> {
-            StringBuilder sb = new StringBuilder();
-            sb.append(o.getClass().getName());
-            sb.append(method.getName());
-            if (objects == null) {
-                for (Object obj : objects) {
-                    sb.append(obj.toString());
-                }
-            }
-            sb.append(JSON.toJSON(objects));
-            return sb.toString();
-        };
+    @ConditionalOnBean(RedisStandaloneConfiguration.class)
+    public JedisConnectionFactory jedisConnectionFactory(RedisStandaloneConfiguration redisStandaloneConfiguration) {
+        return new JedisConnectionFactory(redisStandaloneConfiguration);
     }
 
-    public void setHost(String host) {
-        this.host = host;
+    @Bean
+    @ConditionalOnBean(JedisConnectionFactory.class)
+    public CacheManager redisCacheManager(JedisConnectionFactory jedisConnectionFactory) {
+        return RedisCacheManager.create(jedisConnectionFactory);
     }
 
-    public void setPort(int port) {
-        this.port = port;
-    }
-
-    public void setMaxTotal(int maxTotal) {
-        this.maxTotal = maxTotal;
-    }
-
-    public void setMaxIdle(int maxIdle) {
-        this.maxIdle = maxIdle;
-    }
-
-    public void setMinIdle(int minIdle) {
-        this.minIdle = minIdle;
-    }
-
-    public void setMaxWaitMillis(long maxWaitMillis) {
-        this.maxWaitMillis = maxWaitMillis;
-    }
-
-    public void setTestOnBorrow(boolean testOnBorrow) {
-        this.testOnBorrow = testOnBorrow;
-    }
-
-    public void setTestOnReturn(boolean testOnReturn) {
-        this.testOnReturn = testOnReturn;
-    }
-
-    public void setTestWhileIdle(boolean testWhileIdle) {
-        this.testWhileIdle = testWhileIdle;
-    }
-
-    public void setTimeBetweenEvictionRunsMillis(long timeBetweenEvictionRunsMillis) {
-        this.timeBetweenEvictionRunsMillis = timeBetweenEvictionRunsMillis;
-    }
-
-    public void setNumTestsPerEvictionRun(int numTestsPerEvictionRun) {
-        this.numTestsPerEvictionRun = numTestsPerEvictionRun;
-    }
-
-    public void setMinEvictableIdleTimeMillis(long minEvictableIdleTimeMillis) {
-        this.minEvictableIdleTimeMillis = minEvictableIdleTimeMillis;
-    }
 }

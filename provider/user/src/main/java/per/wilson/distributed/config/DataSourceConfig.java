@@ -3,7 +3,6 @@ package per.wilson.distributed.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -21,11 +20,9 @@ import java.util.Properties;
  */
 @Configuration
 @EnableAutoConfiguration
-@RefreshScope
 public class DataSourceConfig {
 
     @Bean
-    @RefreshScope
     @ConfigurationProperties(prefix = "jdbc")
     public DruidDataSource dataSource() {
         return new DruidDataSource();

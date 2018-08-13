@@ -14,9 +14,7 @@ import per.wilson.distributed.config.UserProviderConfig;
  * @date 18-7-10
  */
 @SpringBootApplication(scanBasePackageClasses = UserProviderConfig.class)
-@RequestMapping("/")
 @EnableDubbo
-@RestController
 public class UserProviderApp {
 
     public static void main(String[] args) {

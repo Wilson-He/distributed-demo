@@ -1,0 +1,36 @@
+#redis:
+#    port: 6379
+#    host: localhost
+#    password:
+#    max-idle: 400
+#    max-total: 6000
+#    max-wait-millis: 3000
+#    timeout: 100000
+#    test-on-borrow: true
+#    test-on-return: true
+#    db-index: 3
+#    default-cache-expire-time: 88
+spring:
+  redis:
+    is-init: false
+    host-name: localhost
+    port: 6379
+    database: 4
+    password:
+    jedis:
+      pool:
+        config:
+          test-on-borrow: true
+          test-on-return: true
+          max-total: 6000
+          max-wait-millis: 3000
+          max-idle: 10
+          min-idle: 3
+    timeout: 6000s
+    cluster:
+      nodes:
+        timeout: 3000
+        max-attempt: 3
+        hosts: [192.168.0.101,192.168.0.101,192.168.0.101]
+        ports: [6381,6382,6383]
+

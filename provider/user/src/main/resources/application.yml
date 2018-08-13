@@ -4,7 +4,7 @@ spring:
   application:
     name: user-provider
   profiles:
-    include: jdbc
+    include: jdbc,redis
   cloud:
     consul:
       host: localhost
