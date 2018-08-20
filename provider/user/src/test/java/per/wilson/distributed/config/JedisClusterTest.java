@@ -1,7 +1,6 @@
 package per.wilson.distributed.config;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import per.wilson.distributed.entity.model.User;
@@ -18,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @date 18-8-13
  */
 @SpringBootTest(classes = UserProviderConfig.class)
-@AutoConfigureMockMvc
 @SpringJUnitConfig
 class JedisClusterTest {
     @Resource
@@ -29,7 +27,7 @@ class JedisClusterTest {
 
     @Test
     void setStringTest() {
-        assertEquals(jedisClusterUtil.set(STRING_KEY, "Wilson"), "OK");
+        assertEquals(jedisClusterUtil.put(STRING_KEY, "Wilson"), "OK");
     }
 
     @Test
@@ -47,7 +45,7 @@ class JedisClusterTest {
         User user = new User();
         user.setUsername("Wilson");
         user.setPassword("000000");
-        assertEquals(jedisClusterUtil.setObject(OBJECT_KEY, user), "OK");
+        assertEquals(jedisClusterUtil.putObject(OBJECT_KEY, user), "OK");
     }
 
     @Test

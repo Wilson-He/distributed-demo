@@ -2,9 +2,14 @@ package per.wilson.distributed.config;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Component;
+import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
+import redis.clients.jedis.JedisPool;
 
 import javax.annotation.Resource;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * JedisClusterUtil
@@ -17,8 +22,21 @@ public class JedisClusterUtil {
     @Resource
     private JedisCluster jedisCluster;
 
-    public String set(String key, String value) {
-        return jedisCluster.set(key, value);
+    private final Long DEFAULT_EXPIRED = 60 * 30L;
+
+    public String put(String key, String value) {
+        return put(key, value, DEFAULT_EXPIRED);
+    }
+
+   public String put(String key, String value,Long expiredSecond) {
+        return jedisCluster.set(key, value, "NX", "EX", expiredSecond);
+    }
+
+    public String putIfAbsent(String key, Object value) {
+        if (exists(key)) {
+            return null;
+        }
+        return value instanceof String ? put(key, (String) value,DEFAULT_EXPIRED) : putObject(key, value);
     }
 
     public String get(String key) {
@@ -31,6 +49,28 @@ public class JedisClusterUtil {
 
     public boolean del(String key) {
         return jedisCluster.del(key) == 1L;
+    }
+
+    public void clear(){
+        Map<String, JedisPool> poolMap = jedisCluster.getClusterNodes();
+        Set<String> treeSet = new TreeSet<>();
+        poolMap.forEach((k, v) -> {
+            try (Jedis jedis = v.getResource()) {
+                treeSet.addAll(jedis.keys("*"));
+            }
+        });
+        jedisCluster.del((String[]) treeSet.toArray());
+    }
+
+    public Set<String> keys(String pattern) {
+        Map<String, JedisPool> poolMap = jedisCluster.getClusterNodes();
+        Set<String> treeSet = new TreeSet<>();
+        poolMap.forEach((k, v) -> {
+            try (Jedis jedis = v.getResource()) {
+                treeSet.addAll(jedis.keys(pattern));
+            }
+        });
+        return treeSet;
     }
 
     /**
@@ -47,8 +87,8 @@ public class JedisClusterUtil {
         return jedisCluster.expire(key, seconds);
     }
 
-    public <T> String setObject(String key, T object) {
-        return set(key, JSONObject.toJSONString(object));
+    public String putObject(String key, Object object) {
+        return put(key, JSONObject.toJSONString(object));
     }
 
     public <T> T getObject(String key, Class<T> clazz) {

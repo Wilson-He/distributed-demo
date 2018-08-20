@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,9 @@ import java.util.List;
  * @author Wilson
  * @since 2018-07-10
  */
-public interface BaseService<T> {
+public interface BaseService<ID extends Serializable, T> {
+
+    T getById(ID key);
 
     T getByField(String field, Object value);
 

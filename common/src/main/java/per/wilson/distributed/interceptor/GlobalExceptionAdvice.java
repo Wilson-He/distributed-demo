@@ -97,7 +97,7 @@ public class GlobalExceptionAdvice {
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
     public Object unauthorizedExceptionHandler(AuthorizationException exception) {
         Map<String, Object> map = new HashMap<>(2);
-        map.put("code", HttpStatus.NOT_ACCEPTABLE.value());
+        map.put("code", HttpStatus.FORBIDDEN.value());
         map.put("msg", "权限不足");
         return new ResponseEntity<>(map, HttpStatus.NOT_ACCEPTABLE);
     }

@@ -1,0 +1,13 @@
+dubbo:
+  scan:
+    base-packages: per.wilson.distributed.service
+  application:
+    name: provider
+    id: provider
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 33333
+  registry:
+    address: multicast://224.5.6.7:1234
+    check: false

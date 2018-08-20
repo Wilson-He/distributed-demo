@@ -14,7 +14,7 @@ import javax.validation.constraints.Max;
  * @author Wilson
  * @since 2018-07-10
  */
-public interface UserService extends BaseService<User> {
+public interface UserService extends BaseService<Long, User> {
     int number(@Max(1) int number);
 
 }

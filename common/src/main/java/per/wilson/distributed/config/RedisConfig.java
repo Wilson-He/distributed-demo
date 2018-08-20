@@ -1,16 +1,17 @@
 package per.wilson.distributed.config;
 
 import lombok.Setter;
-import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CachingConfigurerSupport;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.interceptor.KeyGenerator;
+import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisPassword;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
@@ -19,6 +20,7 @@ import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPoolConfig;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -34,7 +36,8 @@ import java.util.stream.IntStream;
 @EnableAutoConfiguration
 @ConfigurationProperties("spring.redis.cluster.nodes")
 @Setter
-public class RedisConfig {
+@EnableCaching
+public class RedisConfig extends CachingConfigurerSupport {
     @Resource
     private Environment environment;
 
@@ -49,7 +52,7 @@ public class RedisConfig {
 
     @Bean
     @ConfigurationProperties(prefix = "spring.redis.jedis.pool.config")
-    public GenericObjectPoolConfig poolConfig() {
+    public JedisPoolConfig jedisPoolConfig() {
         return new JedisPoolConfig();
     }
 
@@ -59,6 +62,37 @@ public class RedisConfig {
     }
 
     @Bean
+    public JedisConnectionFactory jedisConnectionFactory(JedisPoolConfig jedisPoolConfig) {
+        return new JedisConnectionFactory(jedisPoolConfig);
+    }
+
+    @Bean
+    public CacheManager cacheManager(JedisClusterUtil jedisClusterUtil) {
+        SimpleCacheManager cacheManager = new SimpleCacheManager();
+        cacheManager.setCaches(Arrays.asList(new RedisClusterCache(true,jedisClusterUtil,"cacheManager")));
+        return cacheManager;
+    }
+
+    @Bean
+    public KeyGenerator keyGenerator() {
+        return (o, method, objects) -> {
+            String key = new StringBuilder()
+                    .append(o.getClass().getName())
+                    .append(method.getName())
+                    .append(Arrays.deepToString(objects))
+                    .toString();
+            return key;
+        };
+
+    }
+
+    /**
+     * 选择jedis配置
+     *
+     * @return
+     */
+    @Bean
+    @ConditionalOnProperty(name = "spring.redis.is-init", havingValue = "false")
     public Set<HostAndPort> nodes() {
         Set<HostAndPort> nodes = new HashSet<>();
         IntStream.rangeClosed(0, nodes.size())
@@ -67,10 +101,16 @@ public class RedisConfig {
     }
 
     @Bean
-    public JedisCluster jedisCluster(Set<HostAndPort> nodes,GenericObjectPoolConfig poolConfig) {
-        return new JedisCluster(nodes,timeout,maxAttempt,poolConfig);
+    @ConditionalOnProperty(name = "spring.redis.is-init", havingValue = "false")
+    public JedisCluster jedisCluster(Set<HostAndPort> nodes, JedisPoolConfig jedisPoolConfig) {
+        return new JedisCluster(nodes, timeout, maxAttempt, jedisPoolConfig);
     }
 
+    /**
+     * 选择spring-data-redis配置
+     *
+     * @return
+     */
     @Bean
     @ConditionalOnProperty(name = "spring.redis.is-init", havingValue = "true")
     @ConfigurationProperties(prefix = "spring.redis")
@@ -79,17 +119,4 @@ public class RedisConfig {
         configuration.setPassword(redisPassword);
         return configuration;
     }
-
-    @Bean
-    @ConditionalOnBean(RedisStandaloneConfiguration.class)
-    public JedisConnectionFactory jedisConnectionFactory(RedisStandaloneConfiguration redisStandaloneConfiguration) {
-        return new JedisConnectionFactory(redisStandaloneConfiguration);
-    }
-
-    @Bean
-    @ConditionalOnBean(JedisConnectionFactory.class)
-    public CacheManager redisCacheManager(JedisConnectionFactory jedisConnectionFactory) {
-        return RedisCacheManager.create(jedisConnectionFactory);
-    }
-
 }
